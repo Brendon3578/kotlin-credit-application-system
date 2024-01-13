@@ -13,11 +13,13 @@ data class Customer(
 
         @Column(nullable = false)
         var lastName: String = "",
+
         @Column(nullable = false, unique = true)
         val cpf: String,
 
         @Column(nullable = false, unique = true)
-        email: String = "",
+        var email: String = "",
+
         @Column(nullable = false)
         var password: String = "",
 
