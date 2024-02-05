@@ -1,6 +1,7 @@
 package com.brendon.creditsystem.model
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "Customer")
@@ -17,6 +18,9 @@ data class Customer(
         @Column(nullable = false, unique = true)
         val cpf: String,
 
+        @Column(nullable = false)
+        var income: BigDecimal = BigDecimal.ZERO,
+
         @Column(nullable = false, unique = true)
         var email: String = "",
 
@@ -31,5 +35,5 @@ data class Customer(
                 cascade = arrayOf(CascadeType.REMOVE),
                 mappedBy = "customer")
         @Column(nullable = false)
-        var creditsval : List<Credit> = mutableListOf(),
+        var credits : List<Credit> = mutableListOf(),
 )
