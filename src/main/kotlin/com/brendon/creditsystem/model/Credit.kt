@@ -22,7 +22,7 @@ data class Credit(
         val dayFirstInstallment: LocalDate, // primeiro dia da parcela
 
         @Column(nullable = false)
-        val numberOfInstalalments: Int = 0, // número de parcelas
+        val numberOfInstallments: Int = 0, // número de parcelas
 
         @Enumerated
         val status: Status = Status.IN_PROGRESS,
