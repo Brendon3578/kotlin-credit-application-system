@@ -2,11 +2,11 @@ spring:
   datasource:
     url: jdbc:h2:mem:credit_system_db
     username: dev
-    # password: 1234
+    password:
   jpa:
     show-sql: true
-    hibernate:
-      properties:
+    # hibernate:
+    properties:
         hibernate.format_sql: true
   #     ddl-auto: create-drop
   h2:
