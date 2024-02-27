@@ -1,5 +1,6 @@
 package com.brendon.creditsystem.controller
 
+import jakarta.validation.Valid
 import com.brendon.creditsystem.dto.CreditDto
 import com.brendon.creditsystem.dto.CreditView
 import com.brendon.creditsystem.dto.CreditViewList
@@ -23,7 +24,7 @@ class CreditResource(
     private val creditService: CreditService
 ) {
     @PostMapping
-    fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String> {
+    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
         val savedCredit = this.creditService.save(creditDto.toEntity())
         return ResponseEntity
             .status(HttpStatus.CREATED)
