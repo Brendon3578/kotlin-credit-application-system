@@ -4,7 +4,7 @@ import com.brendon.creditsystem.model.Address
 import com.brendon.creditsystem.model.Customer
 import java.math.BigDecimal
 
-data class CustomerDto (
+data class CustomerDto(
     val firstName: String,
     val lastName: String,
     val cpf: String,

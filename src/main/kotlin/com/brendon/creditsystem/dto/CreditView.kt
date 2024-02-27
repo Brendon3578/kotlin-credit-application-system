@@ -5,7 +5,7 @@ import com.brendon.creditsystem.model.Credit
 import java.math.BigDecimal
 import java.util.UUID
 
-data class CreditView (
+data class CreditView(
     val creditCode: UUID,
     val creditValue: BigDecimal,
     val numberOfInstallment: Int,

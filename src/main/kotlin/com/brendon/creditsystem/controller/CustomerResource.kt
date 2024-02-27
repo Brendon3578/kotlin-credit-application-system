@@ -30,20 +30,23 @@ class CustomerResource(
     }
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long) : ResponseEntity<CustomerView> {
-        val customer : Customer = this.customerService.findById(id)
+    fun findById(@PathVariable id: Long): ResponseEntity<CustomerView> {
+        val customer: Customer = this.customerService.findById(id)
         return ResponseEntity.status(HttpStatus.OK).body(CustomerView(customer))
     }
 
     @DeleteMapping("/{id}")
-    fun deleteCustomer(@PathVariable id: Long) = ResponseEntity.status(HttpStatus.NO_CONTENT).body(this.customerService.delete(id))
+    fun deleteCustomer(@PathVariable id: Long): ResponseEntity<Unit> {
+        this.customerService.delete(id)
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Unit)
+    }
 
     @PatchMapping
     fun updateCustomer(
         @RequestParam(value = "customerId") id: Long,
         @RequestBody customerUpdateDto: CustomerUpdateDto
     ): ResponseEntity<CustomerView> {
-        val customer : Customer = this.customerService.findById(id)
+        val customer: Customer = this.customerService.findById(id)
         val customerUpdated = this.customerService.save(
             customerUpdateDto.toEntity(customer)
         )

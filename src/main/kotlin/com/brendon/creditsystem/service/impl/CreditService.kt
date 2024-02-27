@@ -10,7 +10,7 @@ import java.util.*
 class CreditService(
     private val creditRepository: CreditRepository,
     private val customerService: CustomerService
-): ICreditService {
+) : ICreditService {
     override fun save(credit: Credit): Credit {
         credit.apply {
             customer = customerService.findById(credit.customer?.id!!)
@@ -27,7 +27,7 @@ class CreditService(
             ?: throw RuntimeException("Credit code $creditCode not found")
 
         return if (credit.customer?.id == customerId) credit
-            else throw RuntimeException("Not your Credit")
+        else throw RuntimeException("Not your Credit")
     }
 
 }

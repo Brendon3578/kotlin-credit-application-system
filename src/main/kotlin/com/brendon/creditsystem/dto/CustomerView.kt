@@ -3,7 +3,7 @@ package com.brendon.creditsystem.dto
 import com.brendon.creditsystem.model.Customer
 import java.math.BigDecimal
 
-data class CustomerView (
+data class CustomerView(
     val firstName: String,
     val lastName: String,
     val cpf: String,
@@ -12,7 +12,7 @@ data class CustomerView (
     val zipCode: String,
     val street: String
 ) {
-    constructor(customer: Customer): this (
+    constructor(customer: Customer) : this(
         firstName = customer.firstName,
         lastName = customer.lastName,
         cpf = customer.cpf,
