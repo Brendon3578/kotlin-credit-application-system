@@ -1,5 +1,6 @@
 package com.brendon.creditsystem.service.impl
 
+import com.brendon.creditsystem.exception.BusinessException
 import com.brendon.creditsystem.model.Credit
 import com.brendon.creditsystem.repository.CreditRepository
 import com.brendon.creditsystem.service.ICreditService
@@ -24,10 +25,9 @@ class CreditService(
 
     override fun findByCreditCode(creditCode: UUID, customerId: Long): Credit {
         val credit: Credit = this.creditRepository.findByCreditCode(creditCode)
-            ?: throw RuntimeException("Credit code $creditCode not found")
+            ?: throw BusinessException("Credit code $creditCode not found")
 
-        return if (credit.customer?.id == customerId) credit
-        else throw RuntimeException("Not your Credit")
+        return if (credit.customer?.id == customerId) credit else throw IllegalArgumentException("Contact Admin")
     }
 
 }
