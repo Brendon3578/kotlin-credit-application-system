@@ -1,9 +1,9 @@
 package com.brendon.creditsystem.controller
 
 import jakarta.validation.Valid
-import com.brendon.creditsystem.dto.CreditDto
-import com.brendon.creditsystem.dto.CreditView
-import com.brendon.creditsystem.dto.CreditViewList
+import com.brendon.creditsystem.dto.request.CreditDto
+import com.brendon.creditsystem.dto.response.CreditView
+import com.brendon.creditsystem.dto.response.CreditViewList
 import com.brendon.creditsystem.model.Credit
 import com.brendon.creditsystem.service.impl.CreditService
 import org.springframework.http.HttpStatus

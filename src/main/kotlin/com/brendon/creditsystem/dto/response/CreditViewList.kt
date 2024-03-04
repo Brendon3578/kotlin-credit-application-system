@@ -1,4 +1,4 @@
-package com.brendon.creditsystem.dto
+package com.brendon.creditsystem.dto.response
 
 import com.brendon.creditsystem.model.Credit
 import java.math.BigDecimal

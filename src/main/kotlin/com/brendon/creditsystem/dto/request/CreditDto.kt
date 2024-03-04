@@ -1,4 +1,4 @@
-package com.brendon.creditsystem.dto
+package com.brendon.creditsystem.dto.request
 
 import com.brendon.creditsystem.model.Credit
 import com.brendon.creditsystem.model.Customer

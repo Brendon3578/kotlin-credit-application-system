@@ -1,13 +1,12 @@
 package com.brendon.creditsystem.controller
 
-import com.brendon.creditsystem.dto.CustomerDto
-import com.brendon.creditsystem.dto.CustomerUpdateDto
-import com.brendon.creditsystem.dto.CustomerView
+import com.brendon.creditsystem.dto.request.CustomerDto
+import com.brendon.creditsystem.dto.request.CustomerUpdateDto
+import com.brendon.creditsystem.dto.response.CustomerView
 import com.brendon.creditsystem.model.Customer
 import com.brendon.creditsystem.service.impl.CustomerService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
