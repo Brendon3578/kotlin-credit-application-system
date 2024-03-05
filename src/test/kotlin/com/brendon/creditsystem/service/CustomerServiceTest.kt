@@ -1,5 +1,6 @@
 package com.brendon.creditsystem.service
 
+import com.brendon.creditsystem.exception.BusinessException
 import com.brendon.creditsystem.model.Address
 import com.brendon.creditsystem.model.Customer
 import com.brendon.creditsystem.repository.CustomerRepository
@@ -13,6 +14,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.math.BigDecimal
+import java.util.*
 
 @ExtendWith(MockKExtension::class)
 class CustomerServiceTest {
@@ -31,6 +33,37 @@ class CustomerServiceTest {
         Assertions.assertThat(actual).isSameAs(fakeCustomer)
         verify(exactly = 1) { customerRepository.save(fakeCustomer)}
 
+    }
+
+    @Test
+    fun `should find customer by id`() {
+        //given
+        val fakeId: Long = Random().nextLong()
+        val fakeCustomer: Customer = buildCustomer(id = fakeId)
+        every { customerRepository.findById(fakeId) } returns Optional.of(fakeCustomer)
+
+        //when
+        val actual: Customer = customerService.findById(fakeId)
+
+        //then
+        Assertions.assertThat(actual).isNotNull
+        Assertions.assertThat(actual).isExactlyInstanceOf(Customer::class.java)
+        Assertions.assertThat(actual).isSameAs(fakeCustomer)
+        verify(exactly = 1) { customerRepository.findById(fakeId) }
+    }
+
+    @Test
+    fun `should not find customer by invalid id and throw BusinessException`() {
+        //given
+        val fakeId: Long = Random().nextLong()
+        every { customerRepository.findById(fakeId) } returns Optional.empty()
+        //when
+
+        //then
+        Assertions.assertThatExceptionOfType(BusinessException::class.java)
+            .isThrownBy { customerService.findById(fakeId) }
+            .withMessage("Id $fakeId not found")
+        verify(exactly = 1) { customerRepository.findById(fakeId) }
     }
 
     private fun buildCustomer(
