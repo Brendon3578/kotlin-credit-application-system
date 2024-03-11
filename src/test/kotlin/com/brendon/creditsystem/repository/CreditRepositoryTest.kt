@@ -59,7 +59,7 @@ class CreditRepositoryTest {
     }
 
     @Test
-    fun `should findd all credits by customer id`() {
+    fun `should find all credits by customer id`() {
         //given
         val customerId: Long = 1L
         //when
